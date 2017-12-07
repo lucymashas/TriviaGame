@@ -5,42 +5,40 @@ $(document).ready(function(){
       question: "Who played a US predident in the movie Austin Powers: The Spy Who Shagged Me",
       possibleAnswers: ["Kelsey Grammer","Tim Robbins","Anthony Hopkins","Nick Nolte"],
       correctAnswer: "Tim Robbins",
-      qimg:"./images.placeholder.png"
+      qimg:"assets/images/spywhoshaggedme.png"
     },
     {
       question: "Who played The Joker in 1989's Batman?",
       possibleAnswers: ["Michael Caine","Tommy Lee Jones","Christopher Walken","Jack Nicholson"],
       correctAnswer: "Jack Nicholson",
-      qimg:"./images.placeholder.png"
+      qimg:"assets/images/batmanjoker.png"
     },
     {
       question: "What is the main sport in the movie Caddyshack? ",
       possibleAnswers:["BasketBall","Boxing","Tennis","Golf"],
       correctAnswer: "Golf",
-      qimg:"./images.placeholder.png"
+      qimg:"assets/images/caddyshack.gif"
     },
     {
       question: "In the movie 'The Wizard of Oz', what did the scarecrow want from the wizard? ",
       possibleAnswers:["Heart","Brain","Soul","Legs"],
       correctAnswer: "Brain",
-      qimg:"./images.placeholder.png"
+      qimg:"assets/images/wizard.png"
     },
     {
       question:" In what year was the original 'Jurassic Park' film released ",
       possibleAnswers:["2006","1993","1967","1999"],
       correctAnswer: "1993",
-      qimg:"./images.placeholder.png"
+      qimg:"assets/images/jurassic-park-sm.png"
+    },
+    {
+      question:" What is the only film directed by Alfred Hitchcock that won an Oscar for Best Picture? ",
+      possibleAnswers:["Spellbound","Psycho","Rear Window","Rebecca"],
+      correctAnswer: "Rebecca",
+      qimg:"assets/images/rebecca.png"
     }
     ];
-   
-
-    // console.log("question: " + triviaQuestions[0].question);
-    // console.log("array Length: " + triviaQuestions.length);
-    // console.log(" Correct: " + triviaQuestions[0].correctAnswer);
-    // console.log(triviaQuestions[0].possibleAnswers.length);
-    // console.log(triviaQuestions[0].possibleAnswers[0]);
-    
-
+  
 
   var triviaGame = {
     numCorrect: 0,
@@ -53,10 +51,12 @@ $(document).ready(function(){
 
     statistics: function(){
        this.stop();
-        $("#questions").html("<p>All done, here's how you did!</p>");
-        $("#guesses").html("<p>Correct Answers: " + triviaGame.numCorrect + "</p");
-        $("#guesses").append("<p>Wrong Answers:   " + triviaGame.numWrong + "</p");
-        $("#guesses").append("<p>UnAnswered: " + triviaGame.unAnswered + "</p>");
+       $("#questions").empty();
+        var stattemplate = 
+            `<p> All Done! Here is how you did: <br> Correct Responses:  ${triviaGame.numCorrect} 
+             <br> Wrong Responses:  ${triviaGame.numWrong} <br> UnAnswered Questions:  ${triviaGame.unAnswered} </p>`
+            $("#outoftime").append(stattemplate);
+
         var $btn2 =$('<input/>').attr({type:'button',id: 'repeat', class:'btn start',value:'START OVER'});
         $("#startover").append($btn2);
     },
@@ -125,7 +125,12 @@ $(document).ready(function(){
           $("#questions").html("<p> Wrong Answer! </p>");
           $("#questions").append("<p> The Correct Answer was: " + triviaQuestions[this.questionIndex].correctAnswer);
           }
-        //display image
+           this.stop();
+           var imgtemplate =
+          `<img src = "${triviaQuestions[this.questionIndex].qimg}" alt="Jurassic Park Image"
+           class="img-thumbnail" >`
+          $("#questions").append(imgtemplate);
+
         window.setTimeout(triviaGame.nextQuestion, 3000);
         // this.nextQuestion();
     },
@@ -138,6 +143,7 @@ $(document).ready(function(){
       this.timer = 30;
       this.intervalId = 0;
       this.questionIndex = 0;
+      $("#outoftime").empty();
       $("#repeat").remove();
     }
 
