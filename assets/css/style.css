@@ -1,7 +1,31 @@
+*{
+	text-align: center;
+	/*max-width:960px;*/
+
+}
+
 .guess{
 	padding: 10px 24px;
 	margin:10px;
 	display: block;
-	width:200px;
+	font-size: 16px;
 
+ }
+ .start{
+ 	margin-top: 10%;
+ 	width: 250px;
+    padding: 10px;
+ }
+ section {
+ 	width:70%;
+ 	max-width: 700px;
+ 	margin:0 auto;
+
+ }
+ .wellcont{
+ 	min-height:200px;
+ }
+ 
+p{
+ 	margin: 10px 0px 10px;
  }
