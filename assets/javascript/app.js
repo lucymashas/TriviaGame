@@ -2,7 +2,7 @@ $(document).ready(function(){
       
   var triviaQuestions = [
     {
-      question: "Who played a US predident in the movie Austin Powers: The Spy Who Shagged Me",
+      question: "Who played a US president in the movie 'Austin Powers: The Spy Who Shagged Me'",
       possibleAnswers: ["Kelsey Grammer","Tim Robbins","Anthony Hopkins","Nick Nolte"],
       correctAnswer: "Tim Robbins",
       qimg:"assets/images/spywhoshaggedme.png"
@@ -14,7 +14,13 @@ $(document).ready(function(){
       qimg:"assets/images/batmanjoker.png"
     },
     {
-      question: "What is the main sport in the movie Caddyshack? ",
+      question:" Where is the Pixar movie 'Finding Nemo' mainly set ",
+      possibleAnswers:["Sydney","Honolulu","Los Angeles","New York"],
+      correctAnswer: "Sydney",
+      qimg:"assets/images/nemo.gif"
+    },
+    {
+      question: "What is the main sport in the movie 'Caddyshack'? ",
       possibleAnswers:["BasketBall","Boxing","Tennis","Golf"],
       correctAnswer: "Golf",
       qimg:"assets/images/caddyshack.gif"
@@ -36,6 +42,18 @@ $(document).ready(function(){
       possibleAnswers:["Spellbound","Psycho","Rear Window","Rebecca"],
       correctAnswer: "Rebecca",
       qimg:"assets/images/rebecca.png"
+    },
+    {
+      question:" What's Pierce Bronson's first James Bond movie ",
+      possibleAnswers:["The World is not Enough","Goldeneye","Die Another Day","Tomorrow Never Dies"],
+      correctAnswer: "Goldeneye",
+      qimg:"assets/images/jamesbond.png"
+    },
+    {
+      question:" In Home Alone what movie does Kevin use to scare the pizza delivery guy ",
+      possibleAnswers:["Angels with Filthy Souls","Angels with Dirty Faces","Reservoir Dogs","Scarface"],
+      correctAnswer: "Angels with Filthy Souls",
+      qimg:"assets/images/jamesbond.png"
     }
     ];
   
@@ -48,6 +66,7 @@ $(document).ready(function(){
     timer: 30,
     intervalId: 0,
     questionIndex:0,
+    timeupimage: "assets/images/timeup.gif",
 
     statistics: function(){
        this.stop();
@@ -74,6 +93,11 @@ $(document).ready(function(){
         //  Alert the user that time is up.
         triviaGame.unAnswered ++;
         $("#outoftime").html("<p> Out Of Time </p>");
+        $('.guess').attr("disabled", true);
+         var imgtemplate =
+          `<img src = "${triviaGame.timeupimage}" alt="Out of Time"
+           class="img-thumbnail" >`
+          $("#questions").html(imgtemplate);
         window.setTimeout(triviaGame.nextQuestion, 3000);
         }
     },
@@ -84,10 +108,9 @@ $(document).ready(function(){
       if (this.questionIndex <= (triviaQuestions.length - 1)){
         $("#questions").html(triviaQuestions[this.questionIndex].question);
         for (var i=0; i < 4; i++){
-          var id = `btn${i}`
+    //Create Guess Button Template
           var btntemplate =
-          `<button id="${id}" 
-                   class = "btn btn-block btn-default guess" 
+          `<button class = "btn btn-block btn-default guess" 
                    value="${triviaQuestions[this.questionIndex].possibleAnswers[i]}">
                    ${triviaQuestions[this.questionIndex].possibleAnswers[i]}</button>`
           $("#guesses").append(btntemplate);
@@ -119,16 +142,17 @@ $(document).ready(function(){
           }
         }
         if (triviaGame.correctFlag){
-          $("#questions").html("<p> Correct! </p>");
+          $("#questions").html("<p class='alerttxt'> CORRECT! </p>");
         }else {
           triviaGame.numWrong ++;
-          $("#questions").html("<p> Wrong Answer! </p>");
-          $("#questions").append("<p> The Correct Answer was: " + triviaQuestions[this.questionIndex].correctAnswer);
+          $("#questions").html("<p class='alerttxt'> WRONG ANSWER! </p>");
+          $("#questions").append("<p class='alerttxt'> The Correct Answer was: " + triviaQuestions[this.questionIndex].correctAnswer);
           }
            this.stop();
+           $('.guess').attr("disabled", true);
            var imgtemplate =
-          `<img src = "${triviaQuestions[this.questionIndex].qimg}" alt="Jurassic Park Image"
-           class="img-thumbnail" >`
+          `<p><img src = "${triviaQuestions[this.questionIndex].qimg}" alt="Movie Image"
+           class="img-thumbnail" ></p>`
           $("#questions").append(imgtemplate);
 
         window.setTimeout(triviaGame.nextQuestion, 3000);
@@ -161,6 +185,7 @@ $(document).ready(function(){
 
   $("#guesses").on("click", ".guess", function(){
       triviaGame.stop();
+      $('.guess').attr("disabled", true);
       triviaGame.questionInput(userguess = ($(this).attr("value")));    
       });
 
