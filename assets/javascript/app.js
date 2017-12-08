@@ -2,7 +2,7 @@ $(document).ready(function(){
       
   var triviaQuestions = [
     {
-      question: "Who played a US president in the movie 'Austin Powers: The Spy Who Shagged Me'",
+      question: "Who played a US president in the movie 'Austin Powers: The Spy Who Shagged Me?'",
       possibleAnswers: ["Kelsey Grammer","Tim Robbins","Anthony Hopkins","Nick Nolte"],
       correctAnswer: "Tim Robbins",
       qimg:"assets/images/spywhoshaggedme.png"
@@ -14,7 +14,7 @@ $(document).ready(function(){
       qimg:"assets/images/batmanjoker.png"
     },
     {
-      question:" Where is the Pixar movie 'Finding Nemo' mainly set ",
+      question:" Where is the Pixar movie 'Finding Nemo' mainly set? ",
       possibleAnswers:["Sydney","Honolulu","Los Angeles","New York"],
       correctAnswer: "Sydney",
       qimg:"assets/images/nemo.gif"
@@ -32,25 +32,25 @@ $(document).ready(function(){
       qimg:"assets/images/wizard.png"
     },
     {
-      question:" In what year was the original 'Jurassic Park' film released ",
+      question:" In what year was the original 'Jurassic Park' film released? ",
       possibleAnswers:["2006","1993","1967","1999"],
       correctAnswer: "1993",
       qimg:"assets/images/jurassic-park-sm.png"
     },
     {
-      question:" What is the only film directed by Alfred Hitchcock that won an Oscar for Best Picture? ",
+      question:" What's the only film directed by Alfred Hitchcock that won an Oscar for Best Picture? ",
       possibleAnswers:["Spellbound","Psycho","Rear Window","Rebecca"],
       correctAnswer: "Rebecca",
       qimg:"assets/images/rebecca.png"
     },
     {
-      question:" What's Pierce Bronson's first James Bond movie ",
+      question:" What's Pierce Bronson's first James Bond movie? ",
       possibleAnswers:["The World is not Enough","Goldeneye","Die Another Day","Tomorrow Never Dies"],
       correctAnswer: "Goldeneye",
       qimg:"assets/images/jamesbond.png"
     },
     {
-      question:" In Home Alone what movie does Kevin use to scare the pizza delivery guy ",
+      question:" In Home Alone what movie does Kevin use to scare the pizza delivery guy? ",
       possibleAnswers:["Angels with Filthy Souls","Angels with Dirty Faces","Reservoir Dogs","Scarface"],
       correctAnswer: "Angels with Filthy Souls",
       qimg:"assets/images/homealone.png"
@@ -70,7 +70,7 @@ $(document).ready(function(){
 
     statistics: function(){
        this.stop();
-       $("#show-number").empty();
+       $("#questions").empty();
         var stattemplate = 
             `<p> All Done! Here is how you did: <br> Correct Responses:  ${triviaGame.numCorrect} 
              <br> Wrong Responses:  ${triviaGame.numWrong} <br> UnAnswered Questions:  ${triviaGame.unAnswered} </p>`
