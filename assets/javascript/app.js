@@ -53,7 +53,7 @@ $(document).ready(function(){
       question:" In Home Alone what movie does Kevin use to scare the pizza delivery guy ",
       possibleAnswers:["Angels with Filthy Souls","Angels with Dirty Faces","Reservoir Dogs","Scarface"],
       correctAnswer: "Angels with Filthy Souls",
-      qimg:"assets/images/jamesbond.png"
+      qimg:"assets/images/homealone.png"
     }
     ];
   
