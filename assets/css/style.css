@@ -24,7 +24,7 @@ h3 {
 }
 .guess{
 	padding: 10px 24px;
-	margin:10px;
+	margin:10px 0;
 	display: block;
 	font-size: 16px;
 	background-color: #DAAB81;
@@ -54,7 +54,7 @@ h3 {
 
  }
  .alerttxt{
- 	 	color: #DAAB81;
+ 	 	color: #b12103;
  	 	font-weight: 700;
  	 	text-transform: uppercase;
  }

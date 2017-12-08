@@ -70,7 +70,7 @@ $(document).ready(function(){
 
     statistics: function(){
        this.stop();
-       $("#questions").empty();
+       $("#show-number").empty();
         var stattemplate = 
             `<p> All Done! Here is how you did: <br> Correct Responses:  ${triviaGame.numCorrect} 
              <br> Wrong Responses:  ${triviaGame.numWrong} <br> UnAnswered Questions:  ${triviaGame.unAnswered} </p>`
@@ -146,7 +146,7 @@ $(document).ready(function(){
         }else {
           triviaGame.numWrong ++;
           $("#questions").html("<p class='alerttxt'> WRONG ANSWER! </p>");
-          $("#questions").append("<p class='alerttxt'> The Correct Answer was: " + triviaQuestions[this.questionIndex].correctAnswer);
+          $("#questions").append("<p class='txtinfo'> The Correct Answer was: " + triviaQuestions[this.questionIndex].correctAnswer);
           }
            this.stop();
            $('.guess').attr("disabled", true);
