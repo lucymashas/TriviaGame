@@ -73,7 +73,7 @@ $(document).ready(function(){
        $("#questions").empty();
         var stattemplate = 
             `<p> All Done! Here is how you did: <br> Correct Responses:  ${triviaGame.numCorrect} 
-             <br> Wrong Responses:  ${triviaGame.numWrong} <br> UnAnswered Questions:  ${triviaGame.unAnswered} </p>`
+             <br> Wrong Responses:  ${triviaGame.numWrong} <br> Unanswered Questions:  ${triviaGame.unAnswered} </p>`
             $("#outoftime").append(stattemplate);
 
         var $btn2 =$('<input/>').attr({type:'button',id: 'repeat', class:'btn start',value:'START OVER'});
